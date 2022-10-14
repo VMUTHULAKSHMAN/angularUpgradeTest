@@ -1,0 +1,21 @@
+.correspondence-action-table {
+  width: 100%;
+
+  .header {
+    margin: 5px;
+    font-weight: bolder;
+  }
+
+  .view-communication {
+    .confirm-button {
+      color: lightgreen;
+      margin: 0 5px;
+    }
+
+    .reject-button {
+      color: gray;
+    }
+
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,52 @@
+<div class="correspondence-table">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 correspondence-table">
+    <ng-container matColumnDef="applicationId">
+      <th mat-header-cell class="header" *matHeaderCellDef>APPLICATION ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.applicationId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="communicationId">
+      <th mat-header-cell class="header" *matHeaderCellDef>COMMUNICATION ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.communicationId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="communicationType">
+      <th mat-header-cell class="header" *matHeaderCellDef>COMMUNICATION TYPE</th>
+      <td mat-cell *matCellDef="let element">{{ element.communicationType }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sentOn">
+      <th mat-header-cell class="header" *matHeaderCellDef>SENT ON</th>
+      <td mat-cell *matCellDef="let element">{{ element.sentOn | date: 'MMM-dd-yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sentTo">
+      <th mat-header-cell class="header" *matHeaderCellDef>SENT TO</th>
+      <td mat-cell *matCellDef="let element">{{ element.sentTo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actionRequired">
+      <th mat-header-cell class="header" *matHeaderCellDef>ACTION REQUIRED</th>
+      <td mat-cell class="action-required" *matCellDef="let element">{{ element.actionRequired }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="viewCommunication">
+      <th mat-header-cell class="header" *matHeaderCellDef>VIEW COMMUNICATION</th>
+      <td mat-cell class="view-communication" *matCellDef="let element">
+        <button mat-icon-button [disabled]="!element.viewCommunication">
+          <mat-icon *ngIf="element.viewCommunication" (click)="loadActionTable(element.communicationId)">visibility </mat-icon>
+          <mat-icon *ngIf="!element.viewCommunication">visibility_off</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator #paginator [pageSize]="16" [pageSizeOptions]="[4]" aria-label="Select page"></mat-paginator>
+
+  <!-- Action Table -->
+  <ng-container *ngIf="applicationName && communicationId">
+    <div class="correspondence-action-table-header">Action Items</div>
+    <app-communication-action [applicationName]="applicationName" [communicationId]="communicationId"> </app-communication-action>
+  </ng-container>
+</div>

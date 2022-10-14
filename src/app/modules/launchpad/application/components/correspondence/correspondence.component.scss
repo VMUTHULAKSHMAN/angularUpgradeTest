@@ -1,0 +1,35 @@
+.correspondence-table {
+  width: 100%;
+
+  .header {
+    margin: 5px;
+    font-weight: bolder;
+  }
+
+  .view-communication,
+  .action-required {
+    text-align: center;
+  }
+
+  .view-communication {
+    button {
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    cursor: pointer;
+  }
+
+  .correspondence-action-table-header {
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: underline;
+    margin: 15px;
+  }
+}

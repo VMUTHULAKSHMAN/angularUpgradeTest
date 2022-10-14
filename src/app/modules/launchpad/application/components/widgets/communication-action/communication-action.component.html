@@ -1,0 +1,36 @@
+<div class="correspondence-action-table">
+  <table mat-table [dataSource]="dataSource" matSort class="correspondence-action-table">
+    <ng-container matColumnDef="actionId">
+      <th mat-header-cell class="header" *matHeaderCellDef>ACTION ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.actionId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actionName">
+      <th mat-header-cell class="header" *matHeaderCellDef>ACTION NAME</th>
+      <td mat-cell *matCellDef="let element">{{ element.actionName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sentOn">
+      <th mat-header-cell class="header" *matHeaderCellDef>DUE DATE</th>
+      <td mat-cell *matCellDef="let element">{{ element.dueDate | date: 'MMM-dd-yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sentTo">
+      <th mat-header-cell class="header" *matHeaderCellDef>STATUS</th>
+      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actionRequired">
+      <th mat-header-cell class="header" *matHeaderCellDef>TAKE ACTION</th>
+      <td mat-cell class="view-communication" *matCellDef="let element">
+        <mat-icon class="confirm-button">done</mat-icon>
+        <mat-icon class="reject-button">cancel</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator #paginator [pageSizeOptions]="[4, 8, 16]" aria-label="Select page"></mat-paginator>
+  <router-outlet name="communication-action"></router-outlet>
+</div>

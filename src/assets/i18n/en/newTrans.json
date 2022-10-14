@@ -1,0 +1,7 @@
+{
+  "landing": {
+    "title": "Welcome to Landing Pageeee",
+    "adminText": "Only ADMINS can see this text",
+    "userText": "All USERS can see this text"
+  }
+}
