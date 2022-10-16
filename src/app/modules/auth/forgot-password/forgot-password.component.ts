@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
@@ -18,13 +18,13 @@ export class AuthForgotPasswordComponent implements OnInit {
     type: 'success',
     message: ''
   };
-  forgotPasswordForm: FormGroup;
+  forgotPasswordForm: UntypedFormGroup;
   showAlert: boolean = false;
 
   /**
    * Constructor
    */
-  constructor(private _authService: AuthService, private _formBuilder: FormBuilder) {}
+  constructor(private _authService: AuthService, private _formBuilder: UntypedFormBuilder) {}
 
   // -----------------------------------------------------------------------------------------------------
   // @ Lifecycle hooks

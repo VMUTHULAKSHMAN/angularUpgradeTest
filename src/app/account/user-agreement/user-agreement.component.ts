@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { UserAgreementService } from './user-agreement.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserAgreementService } from './user-agreement.service';
 export class UserAgreementComponent implements OnInit {
   pdfSrc!: string;
   enableRenderText!: boolean;
-  userAgreementForm!: FormGroup;
+  userAgreementForm!: UntypedFormGroup;
 
   constructor(private userAgreementService: UserAgreementService) {
     this.userAgreementService.getPdfLink('application2').subscribe({
@@ -24,10 +24,10 @@ export class UserAgreementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userAgreementForm = new FormGroup({
-      agreeCheck: new FormControl(false, [Validators.required]),
-      date: new FormControl({ value: '', disabled: true }, [Validators.required]),
-      initials: new FormControl({ value: '', disabled: true }, [Validators.required])
+    this.userAgreementForm = new UntypedFormGroup({
+      agreeCheck: new UntypedFormControl(false, [Validators.required]),
+      date: new UntypedFormControl({ value: '', disabled: true }, [Validators.required]),
+      initials: new UntypedFormControl({ value: '', disabled: true }, [Validators.required])
     });
   }
 
